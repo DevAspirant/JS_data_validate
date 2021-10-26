@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> التحقق من البيانات </title>
+    <style>
+        .container{
+            padding-right: 250px;
+            padding-left: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h1> نموذج التحقق </h1>
+    <form onsubmit="return validate();">
+        <table>
+            <tr>
+                <td>
+                    <label for="age"> العمر </label>
+                </td>
+                <td>
+                    <input type="text" name="age" id="age">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="agree">
+                    <label for="agree">انا موافق على الاشتراطات </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="تسجيل">
+                </td>
+                <td>
+                    <input type="reset" value="مسح">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+    function validate(){
+        let is_valid = false;
+        let age = document.getElementById('age').value;
+        let is_checked = document.getElementById('agree').checked;
+        let createEle = document.createElement('p');
+        let add = document.getElementById('container');
+        
+
+        if(is_checked == true && !isNaN(age)){
+            is_valid = true;
+            createEle.innerHTML = "نجحت العملية";
+            createEle.style.backgroundColor = "green";
+            add.appendChild(createEle);
+            
+        }else{
+            is_valid = false;
+            createEle.innerHTML = "مع الاسف";
+            createEle.style.backgroundColor = 'red';
+            add.appendChild(createEle);
+        }
+        return is_valid;
+    }
+</script>
+</body>
+</html>
